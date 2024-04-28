@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            text-align: center;
+            background: linear-gradient(rgba(90, 10, 90, 0.628),#190450);
+            color: white;
+            margin-top: 50px;
+            margin-left: 400px;
+            margin-right: 400px;
+            border: 2px solid white;
+            border-radius: 10%;
+            font-size: x-large;
+        }
+        button{
+            font-size: xx-large;
+        }
+       input{
+        font-size: x-large;
+       }
+     .label{
+        display: flex;
+        margin-left: 200px;
+     }
+   .divs{
+    text-align: center;
+   }
+   input{
+    width: 100px;
+   }
+   #discountbill{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-weight: bolder;
+   }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tip Calculator</h1>
+        <div class="divs">
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;Bill Amount₹ <input type="number"  id="bill"></label><br><br>
+        <label>Tips Percentage% <input type="number" id="tipprs"></label><br><br>
+        <label>No.of customers:<input type="number" min="0" max="100" id="noofcustmr"></label><br></div>
+        <div class="label"><p>Discount Percentage %<p id="discountbill">10</p></p></div>
+        <button id="generate">Generate Bill</button>
+        <p id="tipbill">Total Tip Paid:</p>
+<p id="billamount">Total Amount to pay:</p>
+<p id="eachbill">Each Customer to pay:</p><br><br>
+    </div>
+    <script>
+generate.addEventListener("click",() =>{
+    let billamount = document.getElementById("bill").value;
+let discountpercentage = document.getElementById("discountbill").innerHTML;
+discountpercentage = parseInt(discountpercentage,10);
+let numberofcustomer = document.getElementById("noofcustmr").value;
+let tippercentage = document.getElementById("tipprs").value;
+let generate = document.getElementById("generate");
+let discount = discountpercentage*billamount/100;
+let billafterdiscount = billamount-discount;
+let tipbill = tippercentage*billamount/100;
+let totalbill = tipbill + billafterdiscount;
+document.getElementById("billamount").innerHTML = "Total Amount to pay:"+totalbill+"₹";
+document.getElementById('tipbill').innerHTML ="Total Tip Paid:"+tipbill+"₹";
+let eachbill = totalbill/numberofcustomer;
+
+document.getElementById("eachbill").innerHTML = "Each Customer to pay:"+eachbill+"₹";
+});
+    </script>
+</body>
+</html>
